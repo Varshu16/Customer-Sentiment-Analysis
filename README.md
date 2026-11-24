@@ -95,14 +95,16 @@ cd Customer-Sentiment-Analysis
 
 ### 2. Create a Virtual Environment
 
+**Windows:**
 ```bash
 python -m venv venv
+venv\Scripts\activate
 ```
 
-Activate it on Windows:
-
+**macOS / Linux:**
 ```bash
-venv\Scripts\activate
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 ### 3. Install Dependencies
@@ -111,22 +113,24 @@ venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-Download NLTK stopwords:
+### 4. Download NLTK Stopwords
 
 ```bash
 python -c "import nltk; nltk.download('stopwords')"
 ```
 
-### 4. Run the Application
+### 5. Run the Application
 
 ```bash
 waitress-serve --host=127.0.0.1 --port=5000 app:app
 ```
 
-### 5. Open in Browser
+### 6. Open in Browser
 
 Visit:
 
 ```text
 http://127.0.0.1:5000/
 ```
+
+The application will be available locally in your browser.
