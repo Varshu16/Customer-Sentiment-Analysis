@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Sentiment Analysis</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h2>Sentiment<br>Analysis</h2>
+        <p>Customer feedback analytics</p>
+
+        <button class="nav-button active" data-tab="single">
+            Single Review
+        </button>
+
+        <button class="nav-button" data-tab="dataset">
+            Dataset Analysis
+        </button>
+    </aside>
+
+    <main class="main-content">
+
+        <header>
+            <h1>Customer Sentiment Analysis</h1>
+            <p>Understand customer feedback with machine learning.</p>
+        </header>
+
+        <!-- Single Review -->
+        <section id="single" class="section active">
+
+            <div class="card">
+                <h2>Analyze a customer review</h2>
+
+                <textarea id="reviewInput"
+                    placeholder="Enter your customer review here..."></textarea>
+
+                <button id="predictButton" class="primary-button">
+                    Predict Sentiment
+                </button>
+
+                <div id="singleResult" class="result-box hidden"></div>
+            </div>
+
+        </section>
+
+        <!-- Dataset Analysis -->
+        <section id="dataset" class="section">
+
+            <div class="card">
+                <h2>Upload your dataset</h2>
+
+                <input type="file" id="datasetFile"
+                    accept=".csv,.xlsx">
+
+                <p class="hint">
+                    Supported formats: CSV and Excel (.xlsx)
+                </p>
+
+                <button id="loadColumns" class="primary-button">
+                    Upload and Preview Columns
+                </button>
+
+                <div id="columnSection" class="hidden">
+
+                    <label for="reviewColumn">
+                        Select the customer review column
+                    </label>
+
+                    <select id="reviewColumn"></select>
+
+                    <h3>Choose your analysis options</h3>
+
+                    <button id="selectAll" class="secondary-button">
+                        Select All
+                    </button>
+
+                    <button id="deselectAll" class="secondary-button">
+                        Deselect All
+                    </button>
+
+                    <div class="options">
+
+                        <label>
+                            <input type="checkbox" value="total">
+                            Total reviews
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value="counts">
+                            Positive, Neutral and Negative counts
+                        </label>
+
+                        <label>
+                            <input type="checkbox" value="chart">
+                            Distribution chart
+                        </label>
+
+                    </div>
+
+                    <button id="analyzeButton" class="primary-button">
+                        Generate Analysis
+                    </button>
+
+                </div>
+
+                <p id="errorMessage" class="error"></p>
+            </div>
+
+            <!-- Analysis Results -->
+            <div id="results" class="hidden">
+
+                <div id="totalResult" class="card hidden">
+                    <h3>Total Reviews</h3>
+                    <p id="totalValue" class="big-number"></p>
+                </div>
+
+                <div id="countResult" class="summary-grid hidden">
+
+                    <div class="result-card positive">
+                        <h3>Positive</h3>
+                        <p id="positiveCount"></p>
+                    </div>
+
+                    <div class="result-card neutral">
+                        <h3>Neutral</h3>
+                        <p id="neutralCount"></p>
+                    </div>
+
+                    <div class="result-card negative">
+                        <h3>Negative</h3>
+                        <p id="negativeCount"></p>
+                    </div>
+
+                </div>
+
+                <div id="chartResult" class="card hidden">
+                    <h3>Distribution Chart</h3>
+
+                    <div class="chart-container">
+                        <canvas id="sentimentChart"></canvas>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

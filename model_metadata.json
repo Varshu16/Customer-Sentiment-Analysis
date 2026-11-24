@@ -1,0 +1,14 @@
+{
+    "project": "Customer Sentiment Analysis",
+    "model": "Soft Voting Ensemble",
+    "algorithms": [
+        "Multinomial Naive Bayes",
+        "Logistic Regression"
+    ],
+    "vectorizer": "TF-IDF",
+    "accuracy": 0.8253,
+    "macro_f1": 0.6163,
+    "random_state": 42,
+    "test_size": 0.2,
+    "model_file": "notebooks/sentiment_model.pkl"
+}
